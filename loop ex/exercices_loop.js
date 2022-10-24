@@ -28,6 +28,16 @@ for(var i = 0 ; i < x.length ; i ++ ){
     type +=  x[i];
 }console.log(type);
 
+//04
+
+var sum = 0;
+var product = 1;
+var array = [1,2,3,4];
+for (let i = 0; i < array.length; i++) {
+  sum += array[i];
+  product *= array[i];
+  }console.log(`Suma je ${sum} i product je ${product}`)
+
 //05
 
 var a =[[1,2,1,24],[8,11,9,4],[7,0,7,27]];
@@ -51,6 +61,7 @@ var squares = 0;
 sum += i;
 squares = sum * sum;
   }console.log(squares);
+
 //07
 
         sum = 0;
@@ -76,4 +87,19 @@ squares = sum * sum;
     
     console.log(`Suma je ${sum}`);
     console.log(`Prosek ocena je ${prosek}`);
+
+//08 
+
+    for(var i = 0 ; i <= 100; i++){
+      var element = i ;
+       if(element % 3 == 0 && element && element % 5 !== 0){
+         element = 'fizz';
+       }
+     else if (element % 5 == 0  && element % 3 !== 0){
+     element = 'Buzz'
+     }else if( element % 3 == 0 && element % 5 ==0){
+       element = 'FizzBuzz'
+     }
+     console.log(element)
+     }
   
