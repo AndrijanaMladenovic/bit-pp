@@ -54,10 +54,10 @@ console.log(threeDigitLong(564454));
 
 function arithmetic(a, b, c, d) {
   var sum = a + b + c + d;
-  var prosek = sum / 4;
+  var prosek = sum / arguments.length;
   return prosek;
 }
-console.log(arithmetic(2, 3, 4, 5));
+console.log(arithmetic(2, 3, 4, 4));
 
 // 005
 // Write a program that draws a square of a given size. For example, if the size of
