@@ -3,9 +3,8 @@
 // be “number”.
 
 function reverses(number) {
-  var number =
-    parseFloat(number.toString().split("").reverse().join("")) *
-    Math.sign(number);
+  var number = parseFloat(number.toString().split("").reverse().join(""));
+  Math.sign(number);
   return number;
 }
 

@@ -230,7 +230,7 @@ function test_prime(n) {
   }
 }
 
-console.log(test_prime(17));
+console.log(test_prime(2));
 
 // 011
 // Check if a given string is a palindrome (spaces are ignored).
