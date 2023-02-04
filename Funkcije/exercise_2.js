@@ -137,7 +137,7 @@ function test_prime(n) {
   }
 }
 
-console.log(test_prime(37));
+console.log(test_prime(4));
 
 // 009
 // Write a function that replaces spaces in a string with provided separator. If separator is not
