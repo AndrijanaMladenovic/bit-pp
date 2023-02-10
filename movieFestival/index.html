@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+  <title>Movie-form</title>
+</head>
+
+<body>
+  <div class="form">
+    <form action="">
+      <h1>Title</h1>
+      <input class="titles" type="text" placeholder="Title">
+      <h1>Length (min)</h1>
+      <input class="length" type="number" placeholder="Length in min">
+      <select class="ganre" style="height: 45px;" name="" id="">
+        <option value="-">-</option>
+        <option value="drama">Drama</option>
+        <option value="comedy">Comedy</option>
+        <option value="action">Action</option>
+        <option value="horor">Horor</option>
+      </select>
+      <input class="btn" value="Create movie" type="button">
+    </form>
+  </div>
+  <div class="form-date">
+    <form action="">
+      <h1>Program</h1>
+      <h1>Date</h1>
+      <input type="date" class="date">
+      <p class="show hide">Please select date</p>
+      <input type="button" class="btn-program" value="Create program">
+      <h1>Movie</h1>
+      <select name="" id="movie-name" style="height: 45px;">
+        <option value="-"></option>
+      </select>
+      <h1>Program</h1>
+      <select name="" id="program-name" style="height: 45px;">
+        <option value="-"></option>
+      </select>
+      <input type="button" class="add-movie" value="Add movie to program">
+      <div class="msg"></div>
+    </form>
+  </div>
+
+
+
+
+  <script src="entities.js"></script>
+  <script src="form.js"></script>
+</body>
+
+</html>
