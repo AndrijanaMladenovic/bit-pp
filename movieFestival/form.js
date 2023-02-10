@@ -42,7 +42,7 @@ function program() {
       $("p").addClass("hide");
       $("p").removeClass("show");
 
-      var movie = `<h4>${$(".date").val()},duration ${$(".length").val()}</h4>`;
+      var movie = `<h4>${$(".date").val()} TBA</h4>`;
       $(".form-date").append(movie);
       var date = `<option>${movie}</option>`;
       $("#program-name").append(date);
@@ -51,18 +51,18 @@ function program() {
 }
 
 function addMovie() {
-  var length = $(".length").val();
   var sum = 0;
   var msg;
   let select = $("#program-name option:selected").text();
+  let select2 = $("#program-name").text();
 
   $(".add-movie").click(function (e) {
     console.log($("#program-name option:selected").text());
-    if (select === select) {
+    if (select == select2) {
       sum += Number($(".length").val());
       count += 1;
       msg = `<h4> ${$(".date").val()} ${count} movie ${sum} duration `;
-      $(".msg").append(msg);
+      $(".msg").append(program);
     } else if (select !== select) {
       var program = `<h4>${$("#movie-name option:selected").text()} ${$(
         "#program-name option:selected"
