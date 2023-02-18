@@ -53,6 +53,8 @@ function grade(input) {
       $(".error").removeClass("hide");
       $(".hide").addClass("error");
     } else if (input <= 5) {
+      count += 1;
+      document.querySelector(".count").innerHTML = count;
       $(".error").addClass("hide");
       var failedNum = $(`<div class="faild-student">
       <h2>${$("select :selected").text()}</h2>
@@ -72,6 +74,8 @@ function grade(input) {
       $(".passed-count").append(succesNum);
       studentPass += 1;
       document.querySelector(".count-passed").innerHTML = studentPass;
+      count += 1;
+      document.querySelector(".count").innerHTML = count;
       //$(
       // `<h2 class='passed-student'>${$(".name").val()}  -  ${$(
       //   "select :selected"
@@ -79,22 +83,28 @@ function grade(input) {
       //  );
     }
   }
+  if (studentPass > studentFail) {
+    document.querySelector(".procenat-proslih").style.display = "block";
+    var procenat = ((count / studentPass) * 100).toFixed(0) + "%";
+    document.querySelector(".procenat-proslih").innerHTML = procenat;
+  } else if (studentFail > studentPass) {
+    document.querySelector(".procenat-palih").style.display = "block";
+    var procenatPalih = ((count / studentFail) * 100).toFixed(0) + "%";
+
+    document.querySelector(".procenat-palih").innerHTML = procenatPalih;
+  } else if (studentPass !== 0 && studentFail !== 0) {
+    document.querySelector(".procenat-proslih").style.display = "block";
+    document.querySelector(".procenat-palih").style.display = "block";
+    document.querySelector(".procenat-palih").innerHTML = "50%";
+    document.querySelector(".procenat-proslih").innerHTML = "50%";
+  }
 }
 
-//function countStudent() {
-//  var count = $(".passed-count").length;
-// console.log(count);
-//  var u = +$(`<span>${count}</span>`);
-// $(".count-passed").append(u);
-//}
 var count = 0;
 
 function add() {
   $("button").click(function (e) {
     grade();
     nameSurname();
-    count += 1;
-    document.querySelector(".count").innerHTML = count;
-    //countStudent();
   });
 }
