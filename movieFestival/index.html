@@ -3,56 +3,81 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="main.css">
   <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
-  <title>Movie-form</title>
+  <title>Movie</title>
 </head>
 
 <body>
-  <div class="form">
-    <form action="">
-      <h1>Title</h1>
-      <input class="titles" type="text" placeholder="Title">
-      <h1>Length (min)</h1>
-      <input class="length" type="number" placeholder="Length in min">
-      <select class="ganre" style="height: 45px;" name="" id="">
-        <option value="-">-</option>
-        <option value="drama">Drama</option>
-        <option value="comedy">Comedy</option>
-        <option value="action">Action</option>
-        <option value="horor">Horor</option>
-      </select>
-      <input class="btn" value="Create movie" type="button">
-    </form>
-  </div>
-  <div class="form-date">
-    <form action="">
-      <h1>Program</h1>
-      <h1>Date</h1>
-      <input type="date" class="date">
-      <p class="show hide">Please select date</p>
-      <input type="button" class="btn-program" value="Create program">
-      <h1>Movie</h1>
-      <select name="" id="movie-name" style="height: 45px;">
-        <option value="-"></option>
-      </select>
-      <h1>Program</h1>
-      <select name="" id="program-name" style="height: 45px;">
-        <option value="-"></option>
-      </select>
-      <input type="button" class="add-movie" value="Add movie to program">
-      <div class="msg"></div>
-    </form>
-  </div>
+  <h1>Movie festival</h1>
+  <form>
+    <fieldset name="movie">
+      <p>Please fill in the form</p>
+      <p>Movie</p>
+      <fieldset>
+        <!-- Title input -->
+        <label>Title</label>
+        <input type="text" name="movie-title" class="movie-title" placeholder="Title" required>
+
+        <!-- Movie length input -->
+        <label>Length (min)</label>
+        <input type="number" name="movie-length" class="movie-length" placeholder="Length in min" required>
+
+        <!-- Genre select dropdown  -->
+        <select name="genre-select" class="genre-select">
+          <option value="">-</option>
+          <option value="drama">Drama</option>
+          <option value="action">Action</option>
+          <option value="horror">Horror</option>
+          <option value="commedy">Commedy</option>
+        </select>
+
+        <!-- Error message initialy empty -->
+        <div class="movie-error error"></div>
 
 
+        <!-- Crete movie button -->
+        <input type="button" class="create-movie" value="Create movie">
 
+        <!-- Movie list place holder -->
+        <div class="movie-list"></div>
+      </fieldset>
+
+      <p>Program</p>
+
+      <fieldset>
+        <label>Date</label>
+        <input type="date" name="program-date" class="program-date">
+
+        <!-- Error message initialy empty -->
+        <div class="program-error error"></div>
+
+        <input type="button" class="create-program" value="Create program">
+        <div class="program-list"></div>
+
+        <hr>
+
+        <label for="movie-select">Movie</label>
+        <select name="movie-select" class="movie-select">
+          <option value="">-</option>
+        </select>
+
+        <label for="program-select">Program</label>
+        <select name="program-select" class="program-select">
+          <option value="">-</option>
+        </select>
+
+        <div class="assign-error error"></div>
+
+        <input type="button" class="add-movie" value="Add movie to program">
+      </fieldset>
+  </form>
 
   <script src="entities.js"></script>
   <script src="form.js"></script>
+
 </body>
 
 </html>

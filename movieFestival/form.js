@@ -1,73 +1,115 @@
 "use strict";
 $(document).ready(function () {
   createMovie();
-  program();
-  addMovie();
+  createProgram();
+  addMovieToProgram();
 });
-var button = $(".btn");
-var count = 0;
+var movies = [];
+
 function createMovie() {
-  $(button).click(function (e) {
-    var lengths = $(".length").val();
+  $(".create-movie").click(function (e) {
+    window.movie = new Movie(
+      $(".movie-title").val(),
 
-    if (isNaN(Number(lengths))) {
-      var error = `<p class = 'show hide'>Please type number</p>`;
-      $(".form").append(error);
-      $("p").removeClass("hide");
-    } else if ($(".titles").val().length === 0) {
-      var errorTitle = `<p class='showTitle hideTitle'>Please type title of movie</p>`;
-      $(".form").append(errorTitle);
-      $("p").removeClass("hideTitle");
+      $(".movie-length").val(),
+      $(".genre-select option:selected").text()
+    );
+
+    if (
+      !movie.title ||
+      !movie.duration ||
+      !$(".genre-select option:selected").val()
+    ) {
+      var error = `All fields are reguired`;
+      $(".movie-error").text(error);
     } else {
-      $("p").removeClass("show");
-      $("p").addClass("hide");
+      var list = `<ul><li>${movie.getData()}</li></ul>`;
+      $(".movie-list").append(list);
 
-      $("p").addClass("hideTitle");
-      $("p").removeClass("showTitle");
+      var option = `<option>${movie.title}</option>`;
+      $(".movie-error").text("");
+      $(".movie-select").append(option);
 
-      var text = `<h4>${movies.getDatas()} ${ganre.getGanre()}</h4>`;
-      $(".form").append(text);
-      var optionTitle = `<option>${$(".titles").val()}</option>`;
-      $("#movie-name").append(optionTitle);
+      movies.push(movie);
+    }
+  });
+  return;
+}
+
+var programArray = [];
+var movieTitle = [];
+var optionDate = [];
+var date = [];
+var count = 0;
+function createProgram() {
+  $(".create-program").on("click", function (e) {
+    e.preventDefault();
+    count = 0;
+    window.program = new Program();
+    program.date = $(".program-date").val();
+
+    if (program.date == "") {
+      var errorMsg = `Please select date`;
+      $(".program-error").text(errorMsg);
+    } else if (program.date !== "") {
+      $(".program-select").append(option);
+      $(".program-error").text("");
+      optionDate.push(program.date);
+
+      for (var i = 0; i < optionDate.length; i++) {
+        if (optionDate[i] == program.date) {
+          count++;
+        }
+      }
+      if (count >= 2) {
+        var errorMsg = `Program for date already exists!`;
+        $(".program-error").append(errorMsg);
+      } else {
+        var option = `<option class = 'option'>${program.date} program duration : TBA</option>`;
+        var list = `<ul><li>${program.date} program duration : TBA</li></ul>`;
+        $(".program-select").append(option);
+        $(".program-list").append(list);
+      }
     }
   });
 }
-function program() {
-  $(".btn-program").click(function (e) {
-    var sum = 0;
-    var msg;
-    if ($(".date").val() === "") {
-      $("p").removeClass("hide");
-    } else {
-      $("p").addClass("hide");
-      $("p").removeClass("show");
 
-      var movie = `<h4>${$(".date").val()} TBA</h4>`;
-      $(".form-date").append(movie);
-      var date = `<option>${movie}</option>`;
-      $("#program-name").append(date);
-    }
-  });
-}
-
-function addMovie() {
-  var sum = 0;
-  var msg;
-  let select = $("#program-name option:selected").text();
-  let select2 = $("#program-name").text();
-
+var dateArray = [];
+var programDateOption = [];
+var sum = 0;
+var countDate = 0;
+var countMovie = 1;
+function addMovieToProgram() {
   $(".add-movie").click(function (e) {
-    console.log($("#program-name option:selected").text());
-    if (select == select2) {
-      sum += Number($(".length").val());
-      count += 1;
-      msg = `<h4> ${$(".date").val()} ${count} movie ${sum} duration `;
-      $(".msg").append(program);
-    } else if (select !== select) {
-      var program = `<h4>${$("#movie-name option:selected").text()} ${$(
-        "#program-name option:selected"
-      ).text()}</h4>`;
-      $(".msg").append(program);
+    countDate = 0;
+    window.movieToProgram = new MovieToProgram(
+      $(".movie-select option:selected").text(),
+      $(".program-select option:selected").text().slice(0, 10)
+    );
+    programDateOption.push(movieToProgram.date);
+    var newArr = programDateOption.filter((el) => el === movieToProgram.date);
+
+    for (var i = 0; i < movies.length; i++) {
+      if (
+        (movieToProgram.title == movies[i].title && newArr.length == 1) ||
+        newArr.length < 1
+      ) {
+        var movieLength = Number(movies[i].duration);
+        var option2 = `<ul><li class='razlicit-datum'>${movieToProgram.date} program duration : ${movieLength}</li><ul>`;
+        $(".program-list").append(option2);
+        sum = movieLength;
+        continue;
+      } else if (movieToProgram.title == movies[i].title && newArr.length > 1) {
+        var movieLength = Number(movies[i].duration);
+
+        sum += movieLength;
+
+        countMovie++;
+        var option3 = `<ul><li class='razlicit-datum'>${movieToProgram.date}  ${countMovie} movies program duration : ${sum}</li><ul>`;
+        var optionText = `${movieToProgram.date}  ${countMovie} movies program duration : ${sum}`;
+        $(".program-list").append(option3);
+        $(".program-select option:selected").text(optionText);
+      }
     }
   });
 }

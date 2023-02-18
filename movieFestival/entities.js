@@ -1,34 +1,34 @@
 "use strict";
 
-// var title = document.querySelector(".title");
-// var ganre = document.querySelector(".genre");
-// var lengthInMin = document.querySelector(".length");
+class Movie {
+  constructor(title, duration, genre) {
+    this.title = title;
+    this.duration = duration;
+    this.genre = genre;
+  }
+  getGenre() {
+    return `${this.genre[0]}${this.genre[this.genre.length - 1]}`.toUpperCase();
+  }
 
-// class Movie {
-// constructor(title, lengthMin, genre) {
-//   this.title = $(title).val();
-//   this.lengthMin = $(lengthInMin).val();
-//   this.genre = $(genre).val();
-// }
-// getData() {
-//   return `${this.title},${this.lengthMin},${this.genre}`;
-//  }
-//}
+  getData() {
+    var data = `${this.title},${this.duration},${this.getGenre()}`;
+    return data;
+  }
+}
 
-var movies = {
-  getDatas: function (title, lengths) {
-    title = $(".titles").val();
-    lengths = $(".length").val();
+class Program extends Movie {
+  constructor(title, duration, genre, date) {
+    super(title, duration, genre);
+    this.date = date;
+  }
+  getProgram() {
+    return `${this.getData()},${this.date}`;
+  }
+}
 
-    return `${title} ${lengths}`;
-  },
-};
-
-var ganre = {
-  getGanre: function (ganre) {
-    ganre = $("select :selected").text();
-    var firstLatter = ganre.charAt(0);
-    var lastLatter = ganre.charAt(ganre.length - 1);
-    return `${firstLatter}${lastLatter}`;
-  },
-};
+class MovieToProgram {
+  constructor(title, date) {
+    this.title = title;
+    this.date = date;
+  }
+}
