@@ -1,0 +1,91 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px 0;
+  background-color: grey;
+  align-items: center;
+}
+
+input{
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  width: 200px;
+}
+
+h1{
+  color: #fff;
+}
+
+body{
+  background-image: url('./812062.png');
+  background-size: cover;
+}
+
+.card-holder{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 50px;
+  
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  margin: 10px ;
+  border-radius: 10px;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+button{
+  width: 150px;
+
+}
+
+.pagination{
+ 
+  position: absolute;
+  transform: translate(6%);
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.cardInfo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-size: 22px;
+  padding-top: 150px;
+}
+
+p{
+  color: #fff;
+}
+.name{
+  color: rgb(29, 236, 29);
+}
+
+h4{
+  color: #fff;
+  font-size: 28px;
+}
+
+h1{
+  color: #fff;
+}
