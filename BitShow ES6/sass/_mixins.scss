@@ -1,0 +1,14 @@
+
+@mixin flex-center($direction,$justify-content){
+  display: flex;
+    align-items: center;
+    justify-content: $justify-content;
+    flex-direction: $direction;
+    
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}

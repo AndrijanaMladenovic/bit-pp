@@ -1,0 +1,397 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  font-family: "Roboto";
+  font-weight: 500; }
+
+.logo {
+  color: #fff;
+  font-family: "Roboto";
+  font-size: 36px; }
+
+.logo:hover {
+  color: #085654;
+  transition: all 0.3s; }
+
+input {
+  height: 40px;
+  width: 300px;
+  border-radius: 10px; }
+
+.nav-bar {
+  height: 80px;
+  width: 100%;
+  background-color: #343A40;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row; }
+
+h1 {
+  color: #fff;
+  font-family: "Roboto";
+  font-size: 36px;
+  font-family: "Roboto"; }
+
+.popularShows {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  margin: 80px 0;
+  justify-items: center;
+  align-self: center; }
+
+.card {
+  border: 1px solid #c0bdbd;
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .card img {
+    width: 90%; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 1px 2px 20px 0px rgba(0, 0, 0, 0.59);
+  cursor: pointer;
+  transition: all 0.3s; }
+
+li {
+  font-size: 24px;
+  font-family: "Roboto";
+  text-decoration: none;
+  list-style-type: disc;
+  text-align: center;
+  margin: 10px 0px;
+  display: inline-block; }
+
+a {
+  color: #69AFFF;
+  text-decoration: none;
+  font-weight: 600; }
+
+h2 {
+  font-size: 36px;
+  font-weight: 600;
+  padding-bottom: 15px;
+  padding: 20px; }
+
+h5 {
+  margin: 30px;
+  font-size: 36px;
+  font-family: "Roboto";
+  font-weight: 600; }
+
+.movie-preview {
+  gap: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row; }
+
+.castSeason {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; }
+
+.cast {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px; }
+
+.castList, .season-list {
+  display: list-item; }
+
+h3 {
+  font-family: "Roboto";
+  font-size: 36px;
+  font-weight: 600;
+  padding-bottom: 15px; }
+
+.text {
+  border-bottom: 0.5px solid #b6bbbf;
+  margin: 0px 10px;
+  text-align: center; }
+
+.imgNewPage {
+  max-width: 600px;
+  height: auto; }
+
+.title {
+  font-weight: 600;
+  font-family: "Roboto"; }
+
+.crewCard {
+  display: flex;
+  flex-direction: row;
+  gap: 10px; }
+
+.crewText {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  font-size: 18px;
+  gap: 5px;
+  padding-top: 15px; }
+
+.crew {
+  width: 200px; }
+
+.crewName {
+  color: #085654; }
+
+.containerCrew {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 50px; }
+
+.aka {
+  text-align: center;
+  max-width: 900px;
+  color: #fff;
+  background-color: #085654;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 24px;
+  line-height: 1.2;
+  font-family: "Roboto";
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+
+.nameOfEpisodes {
+  font-size: 14px;
+  border-bottom: 1px solid #b6bbbf; }
+
+.season {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px; }
+
+.text-season {
+  padding: 0; }
+
+.paragraf {
+  text-align: center;
+  max-width: 950px;
+  color: #fff;
+  background-color: #085654;
+  border-radius: 10px;
+  font-size: 24px;
+  line-height: 1.2;
+  font-family: "Roboto";
+  margin: 50px;
+  padding: 40px; }
+
+.dropdown {
+  border: 1px solid #b6bbbf;
+  line-height: 0;
+  position: absolute;
+  margin-left: 6px;
+  z-index: 100;
+  width: 290px;
+  background-color: #fff; }
+
+.dropDownLink {
+  font-family: "Roboto";
+  background-color: #fff;
+  color: #343a407f;
+  font-size: 14px; }
+
+.dropDownLink:hover {
+  color: #085654; }
+
+.btn {
+  background-color: #085654;
+  color: #fff;
+  width: 100px;
+  height: 40px;
+  border: none;
+  margin: 15px;
+  font-size: 14px; }
+
+.btn:hover, .btn:visited, .btn:active {
+  cursor: pointer;
+  background-color: #0A706D;
+  color: #fff;
+  transition: all 0.3s; }
+
+button {
+  width: 80px;
+  height: 40px; }
+
+.btn-season {
+  background-color: #085654;
+  color: #fff;
+  border: none;
+  min-width: 178px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row; }
+
+.btn-season:hover,
+.btn-season:active,
+.btn-season:visited {
+  cursor: pointer;
+  background-color: #0A706D;
+  color: #fff;
+  transition: all 0.3s; }
+
+span.exit {
+  position: relative;
+  left: 50px;
+  top: -7px;
+  background-color: #ffff;
+  color: #085654;
+  padding: 5px; }
+
+footer {
+  background-color: #343A40;
+  color: #ffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  font-size: 24px;
+  margin-top: 30px; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; }
+
+@media (max-width: 1000px) {
+  .imgNewPage {
+    max-width: 500px; }
+
+  .movie-preview {
+    flex-direction: column; }
+
+  .castSeason {
+    align-items: center; }
+
+  .cast {
+    align-items: center; }
+
+  .episode {
+    flex-direction: column; }
+
+  .season {
+    margin: 0; }
+
+  span.exit {
+    left: 86px;
+    top: -15px; } }
+@media (max-width: 800px) {
+  .popularShows {
+    grid-template-columns: 1fr 1fr;
+    max-width: 1000px; } }
+@media (max-width: 742px) {
+  .containerCrew {
+    grid-template-columns: 1fr; } }
+@media (max-width: 500px) {
+  .btns {
+    display: flex;
+    flex-direction: column; }
+
+  footer {
+    font-size: 14px; }
+
+  .imgNewPage {
+    max-width: 245px; }
+
+  .logo {
+    font-size: 18px; }
+
+  input {
+    max-width: 200px; }
+
+  h5 {
+    font-size: 18px; }
+
+  h2 {
+    font-size: 18px; }
+
+  li {
+    font-size: 14px; }
+
+  p {
+    font-size: 14px; }
+
+  h3 {
+    font-size: 18px; }
+
+  .season-list {
+    font-size: 14px; }
+
+  .castList {
+    font-size: 14px; }
+
+  .popularShows {
+    grid-template-columns: 1fr;
+    max-width: 1000px;
+    margin: 15px 0; }
+
+  .paragraf {
+    padding: 10px; }
+
+  .dropdown {
+    max-width: 190px; }
+
+  .dropDownLink {
+    font-size: 14px; } }
