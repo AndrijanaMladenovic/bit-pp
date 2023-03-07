@@ -223,7 +223,8 @@ h3 {
   margin-bottom: 50px; }
 
 .text-season {
-  padding: 0; }
+  padding: 0;
+  text-align: center; }
 
 .paragraf {
   text-align: center;
@@ -347,7 +348,8 @@ body {
 @media (max-width: 500px) {
   .btns {
     display: flex;
-    flex-direction: column; }
+    flex-direction: column;
+    text-align: center; }
 
   footer {
     font-size: 14px; }
@@ -388,10 +390,16 @@ body {
     margin: 15px 0; }
 
   .paragraf {
-    padding: 10px; }
+    padding: 10px;
+    display: flex;
+    flex-direction: column; }
 
   .dropdown {
     max-width: 190px; }
 
   .dropDownLink {
     font-size: 14px; } }
+.secondPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }

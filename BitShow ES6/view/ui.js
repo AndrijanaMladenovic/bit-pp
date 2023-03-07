@@ -1,12 +1,12 @@
 export function createCard(card) {
-  var msg = `<div id='${card.id}' class='card'><img src='${card.image}'>
-  <li class='link'><a href ='./secoundPage.html'>${card.name}</a></li></div>`;
+  var msg = `<div id='${card.id}' class='card secoundPageClick'><img src='${card.image}'>
+  <li class='link'><a>${card.name}</a></li></div>`;
   $(".popularShows").append(msg);
 }
 
 export function createDropdown(dropdown) {
-  var item = `<div id='${dropdown.id}'  class = 'list'>
-  <li class='drop-down'><a href ='./secoundPage.html' class = 'dropDownLink'>${dropdown.name}</a></li></div>`;
+  var item = `<div class = 'list' id='${dropdown.id}'>
+  <li class='drop-down'><a class = 'dropDownLink' >${dropdown.name}</a></li></div>`;
 
   $(".dropdown").append(item);
 
@@ -18,6 +18,8 @@ export function createNewPage(show) {
   $(".movie-preview").prepend(div);
   const paragraf = `${show.summary}`;
   $(".paragraf").append(paragraf);
+  $(".paragraf").css("display", "none");
+
   $(".title").text(show.name);
 }
 
@@ -35,6 +37,12 @@ export function createCast(nameSurname) {
 }
 
 export function createCrew(crews) {
+  if (crews.img === null) {
+    crews.img =
+      "https://static.tvmaze.com/images/no-img/no-img-portrait-clean.png";
+  } else {
+    crews.img = crews.img.medium;
+  }
   var crewCard = `<div class='crewCard'><img class = 'crew' alt='${crews.name}' src='${crews.img}'/>
   <p class = 'crewText'><span class='crewName'> ${crews.name}</span> as <span class='crewType'>${crews.type}</span></p></div>`;
   $(".containerCrew").append(crewCard);
@@ -55,6 +63,7 @@ export function createSeason(season) {
   <button class='btn-season'>${season.numberSeason} Season<span class = 'exit ${season.seasonNumber}'> &#10005</span></button></div>`;
 
   $(".episode").append(msg);
+  $(".episode").css("display", "none");
 }
 
 export function createEpisode(episode) {
@@ -62,11 +71,30 @@ export function createEpisode(episode) {
 
   $.each($(element), function (i) {
     var dataNumber = $(element[i]).data("number");
-    console.log(episode);
+
     if (dataNumber == episode.season) {
       var div = `<li class = 'episode'>${episode.numberOfEpisode}
        ${episode.nameOfEpisode}</li>`;
       $(`.season[data-number='${dataNumber}']`).append(div);
     }
   });
+}
+
+export function empty() {
+  $(".secondPage").show();
+  $(".popularShows").hide();
+  $(".popularShows").empty();
+  $(".title").show();
+  $(".castSeason").empty();
+  $(".movie-preview").empty();
+  $(".title").empty();
+  $(".paragraf").empty();
+  $(".castSeason").empty();
+  $(".seasons-number").empty();
+  $(".cast").empty();
+  $(".containerCrew").empty();
+  $(".crewCard").empty();
+  $(".aka").empty();
+  $(".episode").empty();
+  $(".season").empty();
 }

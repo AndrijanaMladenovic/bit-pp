@@ -1,5 +1,11 @@
-import { Shows, Season, Crew, Country, Episode } from "./entities/entities.js";
-import { getData, getShowId } from "./service/service.js";
+import { Shows } from "./entities/shows.js";
+import { Country } from "./entities/country.js";
+import { Crew } from "./entities/crew.js";
+import { Episode } from "./entities/episode.js";
+import { Season } from "./entities/season.js";
+
+import { getData } from "./service/service.js";
+import { getShowId } from "./service/data.js";
 import {
   createCard,
   createDropdown,
@@ -10,17 +16,24 @@ import {
   createAkas,
   createSeason,
   createEpisode,
+  empty,
 } from "./view/ui.js";
+
 const cardUrl = "http://api.tvmaze.com/shows";
 const searchUrl = "https://api.tvmaze.com/search/shows?q=";
 const newPageUrl = "http://api.tvmaze.com/shows/";
-const showId = localStorage.getItem("showId");
+
 let clickCounterCrew = 0;
 let clickCounterSeason = 0;
 let clickCounterAka = 0;
 let clickCounterParagraf = 0;
 
 $(document).ready(function () {
+  addTop50();
+  $(".secondPage").hide();
+});
+
+function addTop50() {
   getData(cardUrl).then((response) => {
     const rated = response.sort(function (a, b) {
       return b.rating.average - a.rating.average;
@@ -28,20 +41,27 @@ $(document).ready(function () {
 
     const top50 = rated.slice(0, 50);
 
-    $.each(top50, function (i) {
-      const card = new Shows(top50[i].name, top50[i].id, top50[i].image.medium);
+    top50.forEach((element) => {
+      const card = new Shows(element.name, element.id, element.image.medium);
       createCard(card);
     });
     getShowId(".card");
+    $(".card").click(function (e) {
+      //   empty();
+
+      $("h5").hide();
+      $(".secondPage").show();
+      $(".popularShows").hide();
+      $(".title").show();
+      newPage();
+      season();
+      cast();
+      crew();
+      akas();
+      showEpisodes();
+    });
   });
-  newPage();
-  search();
-  season();
-  cast();
-  crew();
-  akas();
-  showEpisodes();
-});
+}
 
 function clickCount(count, btn, element) {
   $(btn).click(function (e) {
@@ -53,6 +73,7 @@ function clickCount(count, btn, element) {
     e.preventDefault();
   });
 }
+$(".search").keyup(search);
 
 function search() {
   $("input").keyup(function (e) {
@@ -60,21 +81,42 @@ function search() {
 
     getData(`${searchUrl}${value}`).then((response) => {
       const top10 = response.slice(0, 10);
+
       $(".dropdown").html("");
-      $.each(top10, function (i) {
-        const dropdown = new Shows(top10[i].show.name, top10[i].show.id);
+
+      top10.forEach((element) => {
+        const dropdown = new Shows();
+
+        dropdown.name = element.show.name;
+
+        dropdown.id = element.show.id;
 
         createDropdown(dropdown);
       });
       getShowId(".list");
+
+      $(".list").click(function (e) {
+        // $(".secoundPage").show();
+        $("h5").hide();
+        empty();
+        newPage();
+        season();
+        cast();
+        crew();
+        akas();
+        showEpisodes();
+      });
     });
   });
 }
 
 function newPage() {
+  const showId = sessionStorage.getItem("showId");
+  //
+
   getData(`${newPageUrl}${showId}`).then((response) => {
     const show = new Shows();
-    show.image = response.image.original;
+    show.image = response.image ? response.image.original : response.image;
     show.summary = response.summary;
     show.name = response.name;
     createNewPage(show);
@@ -83,47 +125,46 @@ function newPage() {
 }
 
 function season() {
+  const showId = sessionStorage.getItem("showId");
   getData(`${newPageUrl}${showId}/seasons`).then((response) => {
     console.log(response);
-    $.each(response, function (i) {
+    response.forEach((element) => {
       const season = new Season(
-        response[i].endDate,
-        response[i].number,
-        response[i].premiereDate,
+        element.endDate,
+        element.number,
+        element.premiereDate,
         response.length
       );
       createSeason(season);
-
-      $(`.${season.seasonNumber}`).css("display", "none");
-
       createNewPageSeason(season);
+      $(`.${season.seasonNumber}`).css("display", "none");
     });
   });
 }
 
 function cast() {
+  const showId = sessionStorage.getItem("showId");
   getData(`${newPageUrl}${showId}/cast`).then((response) => {
     const top10 = response.slice(0, 10);
-    $.each(top10, function (i) {
-      const nameSurname = top10[i].person.name;
+    top10.forEach((element) => {
+      const nameSurname = element.person.name;
       createCast(nameSurname);
     });
   });
 }
 
 function crew() {
+  const showId = sessionStorage.getItem("showId");
   getData(`${newPageUrl}${showId}/crew`).then((response) => {
     const top9 = response.slice(0, 9);
-    const crews = new Crew();
-    $.each(top9, function (i) {
-      if (top9[i].person.image !== null) {
-        (crews.name = top9[i].person.name),
-          (crews.img = top9[i].person.image.medium),
-          (crews.type = top9[i].type);
-      } else {
-        crews.img =
-          "https://static.tvmaze.com/images/no-img/no-img-portrait-clean.png";
-      }
+
+    top9.forEach((element) => {
+      console.log(element);
+      const crews = new Crew(
+        element.person.name,
+        element.person.image,
+        element.type
+      );
 
       createCrew(crews);
       clickCount(clickCounterCrew, $(".btn-crew"), $(".crewCard"));
@@ -132,13 +173,14 @@ function crew() {
 }
 
 function akas() {
+  const showId = sessionStorage.getItem("showId");
   getData(`${newPageUrl}${showId}/akas`).then((response) => {
     const top5 = response.slice(0, 5);
-    $.each(top5, function (i) {
+    top5.forEach((element) => {
       const country = new Country(
-        top5[i].country.name,
-        top5[i].country.code.toLowerCase(),
-        top5[i].name
+        element.country ? element.country.name : "",
+        element.country ? element.country.code.toLowerCase() : "",
+        element.name
       );
       createAkas(country);
       clickCount(clickCounterAka, $(".btn-aka"), $(".aka"));
@@ -147,16 +189,17 @@ function akas() {
 }
 
 function showEpisodes() {
+  const showId = sessionStorage.getItem("showId");
   getData(`${newPageUrl}${showId}/episodes`).then((response) => {
     console.log(response);
-    $.each(response, function (i) {
-      const episode = new Episode(
-        response[i].name,
-        response[i].season,
-        response[i].number
-      );
+    response.forEach((element) => {
+      const episode = new Episode(element.name, element.season, element.number);
       createEpisode(episode);
       clickCount(clickCounterSeason, $(".btn-episode"), $(".episode"));
     });
   });
 }
+
+$("html").click(function (e) {
+  $(".dropdown").css("display", "none");
+});
