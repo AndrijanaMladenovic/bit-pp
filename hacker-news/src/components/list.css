@@ -1,0 +1,36 @@
+.list{
+  background-color: #F6F6EE;
+  border-bottom: 1px grey solid;width: 1000px;
+  padding: 30px;
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+p{
+  display: inherit;
+  align-items: center;
+}
+span{
+  display: inherit;
+  align-items: center;
+}
+.comments{
+  background-color: #17A2B7;
+  color: white;
+  border-radius: 10px;
+  padding: 1px 5px;
+}
+p{
+  color:rgb(234,84,33);
+}
