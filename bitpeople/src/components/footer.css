@@ -1,0 +1,12 @@
+
+footer{
+  background-color: #EE6E73;
+  color: #ffff;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  
+  }

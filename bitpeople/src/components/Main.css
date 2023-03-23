@@ -1,0 +1,47 @@
+.female{
+  background-color: #FFEBEE;
+  width: fit-content;
+
+
+}
+.female:hover{
+  box-shadow: -2px -2px 34px -4px rgba(0,0,0,0.59);
+}
+.men:hover{
+  box-shadow:-2px -2px 34px -4px rgba(0,0,0,0.59) ;
+}
+.men{
+  width: fit-content;
+}
+
+
+
+
+.cardFlex{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+  width: 500px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  
+}
+.round{
+  border-radius: 50%;
+}
+
+.cardGrid{
+ display: flex;
+ flex-direction: column;
+ margin: 20px;
+ width: fit-content;
+ 
+ 
+ justify-content: center;
+}
+.email{
+  display: flex;
+  align-items: center;
+}

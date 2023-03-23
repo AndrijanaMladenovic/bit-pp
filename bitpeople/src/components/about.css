@@ -1,0 +1,19 @@
+.container_about{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.first-col{
+  text-align: center;
+  padding: 0 150px;
+  font-size: 28px;
+}
+
+.second-col{
+   text-align: center;
+  padding: 0 150px;
+  font-size: 28px;
+}
